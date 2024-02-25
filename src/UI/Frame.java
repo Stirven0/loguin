@@ -4,6 +4,14 @@
  */
 package UI;
 
+import java.beans.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.naming.spi.DirStateFactory.Result;
+
+import conexionDB.conexion;
+
 /**
  *
  * @author USUARIO
@@ -27,14 +35,14 @@ public class Frame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        pabel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        textUser = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        textPass = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -46,48 +54,53 @@ public class Frame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(248, 248, 251));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(258, 380));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pabel.setBackground(new java.awt.Color(255, 255, 255));
+        pabel.setPreferredSize(new java.awt.Dimension(258, 380));
+        pabel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Administrator Male.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 68, 260, 50));
+        pabel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 68, 260, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Card_Header.jpg"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        pabel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(73, 80, 87));
         jLabel5.setText("Ususario");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        pabel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(73, 80, 87));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 200, -1));
+        textUser.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        textUser.setForeground(new java.awt.Color(73, 80, 87));
+        pabel.add(textUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 200, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(73, 80, 87));
         jLabel6.setText("Contraseña");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        pabel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(73, 80, 87));
         jCheckBox1.setText("Recuerdame");
-        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+        pabel.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(73, 80, 87));
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 200, -1));
+        textPass.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        textPass.setForeground(new java.awt.Color(73, 80, 87));
+        pabel.add(textPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 200, -1));
 
         jButton1.setBackground(new java.awt.Color(85, 110, 230));
         jButton1.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Iniciar Secion");
         jButton1.setBorder(null);
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 200, 30));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        pabel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 200, 30));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 258, 380));
+        jPanel1.add(pabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 258, 380));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/square back.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, -10, -1, -1));
@@ -100,6 +113,50 @@ public class Frame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        conexion jdbc = new conexion();
+        java.sql.Statement statement;
+        ResultSet rows;
+        try {
+            statement = jdbc.conectar().createStatement();
+            rows = statement.executeQuery("SELECT * FROM usuarios");
+            while (rows.next()) {
+                String name = rows.getString("nombre");
+                if (rows.getString("nombre").equals(textUser.getText())) {
+                    char[] contrasenaServer = rows.getString("contrasena").toCharArray();
+                    char[] contrasenaFrom = textPass.getPassword();
+                    if (contrasenaFrom.length == contrasenaServer.length) {
+                        int i = 0;
+                        while (i != -1 && i < contrasenaServer.length) {
+                            if (contrasenaFrom[i] != contrasenaServer[i]) {
+                                System.out.println("Error en la contraseña");
+                                i = -1;
+                                break;
+
+                            }
+                            i++;
+                        }
+                        if (i == -1) {
+                            System.out.println("Error en la contraseña");
+                        } else {
+                            System.out.println("Secion Iniciada");
+                        }
+                    } else {
+                        System.out.println("Error en la contraseña");
+                    }
+                    break;
+                }
+            }
+            if (rows.next() == false) {
+                System.out.println("el usuario no exites el la base de datos");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener datos de la tabla: " + e);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,8 +203,8 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel pabel;
+    private javax.swing.JPasswordField textPass;
+    private javax.swing.JTextField textUser;
     // End of variables declaration//GEN-END:variables
 }
